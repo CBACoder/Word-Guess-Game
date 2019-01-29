@@ -89,13 +89,17 @@ const keyHandler = function (event) {
     document.getElementById("guessesRemaining").innerHTML = attemptsLeft;
     console.log("win counter", winCounter);
     console.log("The guessed letters:", guessedLettersArray);
-    document.getElementById("letterGuessed").innerHTML = guessedLettersArray;
+    // document.getElementById("letterGuessed").innerHTML = guessedLettersArray;
+    document.getElementById("letterGuessed").append(" ",key);
     // check if all letters guessed right.  
     if (attemptsLeft < 1 && winCounter > 0) {
         console.log("you loose the game");
         resetGame();
     } else if (winCounter < 1 && attemptsLeft > 0) {
         Wins++;
+        // play sound when win occurs 
+        var audio = new Audio('assets/images/Wingame.m4a');
+        audio.play();
         console.log("You win : ", Wins);
         document.getElementById("Wins").innerHTML = Wins;
         resetGame();
